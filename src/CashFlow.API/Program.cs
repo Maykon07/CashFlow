@@ -1,4 +1,5 @@
 using CashFlow.API.Filters;
+using CashFlow.API.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Scalar.AspNetCore;
 
@@ -30,6 +31,8 @@ if (app.Environment.IsDevelopment())
     // 3. Interface moderna do Scalar
     app.MapScalarApiReference();
 }
+
+app.UseMiddleware<CultureMiddleware>();
 
 app.UseHttpsRedirection();
 
