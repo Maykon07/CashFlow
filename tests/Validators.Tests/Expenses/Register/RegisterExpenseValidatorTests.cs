@@ -1,5 +1,7 @@
 ﻿using CashFlow.Application.UseCases.Expenses.Register;
 using CashFlow.Communication.Requests;
+using CommonTestUtilities.Requests;
+using FluentAssertions;
 
 namespace Validators.Tests.Expenses.Register
 {
@@ -10,19 +12,12 @@ namespace Validators.Tests.Expenses.Register
         {
            //Arrange
             var validator = new RegisterExpenseValidator();
-            var request = new RequestsRegisterExpensesJson
-            {
-                Amount = 100,
-                Date = DateTime.Now.AddDays(-1),
-                Description = "Test",
-                Title = "Apple",
-                PaymentType = CashFlow.Communication.Enums.PaymentType.CreditCard
-            };
+            var request =  RequestsRegisterExpensesJsonBilder.Build();
             //Act
             var result = validator.Validate(request);
 
             //Assert
-            Assert.True(result.IsValid);
+            result.IsValid.Should().BeTrue();
         }
     }
 }

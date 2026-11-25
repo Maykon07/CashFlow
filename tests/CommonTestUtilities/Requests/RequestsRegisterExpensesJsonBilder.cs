@@ -6,7 +6,7 @@ namespace CommonTestUtilities.Requests
 {
     public class RequestsRegisterExpensesJsonBilder
     {
-        public RequestsRegisterExpensesJson Build()
+        public static RequestsRegisterExpensesJson Build()
         {
             //var faker = new Faker();
             //var request = new RequestsRegisterExpensesJson
